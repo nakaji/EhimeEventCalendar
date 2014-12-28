@@ -10,19 +10,26 @@ namespace EhimeEventCalendar.Models
     public class EventInfo
     {
         public int Id { get; set; }
-        
+
+        [Display(Name = "タイトル")]
         public string Title { get; set; }
-        
+
+        [Display(Name = "内容")]
         public string Description { get; set; }
-        
+
+        [Display(Name = "開始日時")]
         public DateTime StartTime { get; set; }
-        
+
+        [Display(Name = "終了日時")]
         public DateTime EndTime { get; set; }
-        
+
+        [Display(Name = "会場名")]
         public string PlaceName { get; set; }
-        
+
+        [Display(Name = "会場の住所")]
         public string PlaceAddress { get; set; }
-        
+
+        [Display(Name = "会場のURL")]
         public string PlaceUrl { get; set; }
 
         [Timestamp]
