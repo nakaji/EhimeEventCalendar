@@ -157,6 +157,7 @@
     </Compile>
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\EventInfo.cs" />
+    <Compile Include="ViewModels\HomeViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
