@@ -5,29 +5,58 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>愛媛イベントカレンダー</h1>
+    <p class="lead">愛媛のイベントを皆で共有するサイトです。自由にイベントの登録、修正が行えますので気軽に登録してください。</p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-8">
+        <h2>@Model.Year 年 @Model.Month 月のイベント</h2>
+        <div class="row">
+            <a class="btn btn-default " href="">&laquo; 前月</a>
+            <a class="btn btn-default pull-right" href="">翌月 &raquo;</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>日付</td>
+                    <td>タイトル</td>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 1; i <= Model.Days; i++)
+                {
+                    var events = Model.EventInfos.Where(x => x.StartTime.Day == i).ToList();
+                    if (events.Any())
+                    {
+                        <tr>
+                            <td rowspan="@events.Count().ToString()">@i</td>
+                            <td><a href="/EventInfos/Details/@events.First().Id">@events.First().Title</a></td>
+                        </tr>
+                        if (events.Count > 1)
+                        {
+                            foreach (var e in events.Skip(1))
+                            {
+                                <tr>
+                                    <td><a href="/EventInfos/Details/@e.Id">@e.Title</a></td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                    //イベントがない日は表示しない
+                    @*else
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td></td>
+                            </tr>
+                        }*@
+                }
+            </tbody>
+        </table>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>サイドバーとか</h2>
     </div>
 </div>
