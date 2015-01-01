@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EhimeEventCalendar.Models;
+using EhimeEventCalendar.ViewModels;
 
 namespace EhimeEventCalendar.Controllers
 {
@@ -10,7 +12,17 @@ namespace EhimeEventCalendar.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var db = new AppDbContext();
+
+            var model = new HomeIndexViewModel()
+            {
+                Year = DateTime.Now.Year,
+                Month = DateTime.Now.Month,
+                Days = new DateTime(DateTime.Now.Year,DateTime.Now.Month,1).AddMonths(1).AddDays(-1).Day
+            };
+            model.EventInfos = db.EventInfos.Where(x => x.StartTime >= new DateTime(2015, 1, 1, 0, 0, 0) && x.StartTime <= new DateTime(2015, 2, 1, 0, 0, 0)).ToList();
+
+            return View(model);
         }
 
         public ActionResult About()
