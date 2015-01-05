@@ -13,14 +13,16 @@ namespace EhimeEventCalendar.Controllers
         public ActionResult Index()
         {
             var db = new AppDbContext();
-
+            var start = new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0);
             var model = new HomeIndexViewModel()
             {
                 Year = DateTime.Now.Year,
                 Month = DateTime.Now.Month,
-                Days = new DateTime(DateTime.Now.Year,DateTime.Now.Month,1).AddMonths(1).AddDays(-1).Day
+                Days = start.AddMonths(1).AddDays(-1).Day
             };
-            model.EventInfos = db.EventInfos.Where(x => x.StartTime >= new DateTime(2015, 1, 1, 0, 0, 0) && x.StartTime <= new DateTime(2015, 2, 1, 0, 0, 0)).ToList();
+            var end = start.AddMonths(1);
+            // 当月のイベント
+            model.EventInfos = db.EventInfos.Where(x => x.StartTime >= start && x.StartTime < end).ToList();
 
             return View(model);
         }
