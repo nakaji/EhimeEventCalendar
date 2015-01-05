@@ -12,5 +12,8 @@ namespace EhimeEventCalendar.ViewModels
         public int Year { get; set; }
         public int Month { get; set; }
         public int Days { get; set; }
+        public DateTime PrevMonth { get; set; }
+        public DateTime NextMonth { get; set; }
+
     }
 }

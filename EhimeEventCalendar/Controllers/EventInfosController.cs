@@ -8,12 +8,31 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EhimeEventCalendar.Models;
+using EhimeEventCalendar.ViewModels;
 
 namespace EhimeEventCalendar.Controllers
 {
     public class EventInfosController : Controller
     {
         private AppDbContext db = new AppDbContext();
+
+        [Route("EventInfos/Calendar/{year}/{month}", Name = "CalendarRoute")]
+        public ActionResult Calendar(int year, int month)
+        {
+            var start = new DateTime(year, month, 1, 0, 0, 0);
+            var model = new HomeIndexViewModel()
+            {
+                Year = year,
+                Month = month,
+                Days = start.AddMonths(1).AddDays(-1).Day,
+                PrevMonth = start.AddMonths(-1),
+                NextMonth = start.AddMonths(1),
+            };
+            var end = start.AddMonths(1);
+            model.EventInfos = db.EventInfos.Where(x => x.StartTime >= start && x.StartTime < end).ToList();
+
+            return View("../Home/Index", model);
+        }
 
         // GET: EventInfos
         public async Task<ActionResult> Index()

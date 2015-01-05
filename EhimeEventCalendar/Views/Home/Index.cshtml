@@ -11,10 +11,10 @@
 
 <div class="row">
     <div class="col-md-8">
-        <h2>@Model.Year 年 @Model.Month 月のイベント</h2>
+        <h2 id="ym">@Model.Year 年 @Model.Month 月のイベント</h2>
         <div class="row">
-            <a class="btn btn-default " href="">&laquo; 前月</a>
-            <a class="btn btn-default pull-right" href="">翌月 &raquo;</a>
+            @Html.ActionLink("<< 前月", "Calendar", "EventInfos", new { year = Model.PrevMonth.Year, month = Model.PrevMonth.Month }, new { @class = "btn btn-default" })
+            @Html.ActionLink("翌月 >>", "Calendar", "EventInfos", new { year = Model.NextMonth.Year, month = Model.NextMonth.Month }, new { @class = "btn btn-default pull-right" })
         </div>
         <table class="table">
             <thead>
@@ -46,12 +46,12 @@
                     }
                     //イベントがない日は表示しない
                     @*else
-                        {
-                            <tr>
-                                <td>@i</td>
-                                <td></td>
-                            </tr>
-                        }*@
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td></td>
+                        </tr>
+                    }*@
                 }
             </tbody>
         </table>

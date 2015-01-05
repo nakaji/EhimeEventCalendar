@@ -13,6 +13,9 @@ namespace EhimeEventCalendar
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //属性ルーティングを有効化
+            routes.MapMvcAttributeRoutes();
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

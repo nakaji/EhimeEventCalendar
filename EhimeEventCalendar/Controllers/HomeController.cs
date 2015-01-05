@@ -18,7 +18,9 @@ namespace EhimeEventCalendar.Controllers
             {
                 Year = DateTime.Now.Year,
                 Month = DateTime.Now.Month,
-                Days = start.AddMonths(1).AddDays(-1).Day
+                Days = start.AddMonths(1).AddDays(-1).Day,
+                PrevMonth = start.AddMonths(-1),
+                NextMonth = start.AddMonths(1),
             };
             var end = start.AddMonths(1);
             // 当月のイベント
