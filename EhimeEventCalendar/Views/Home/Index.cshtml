@@ -31,14 +31,14 @@
                     {
                         <tr>
                             <td rowspan="@events.Count().ToString()">@i</td>
-                            <td><a href="/EventInfos/Details/@events.First().Id">@events.First().Title</a></td>
+                            <td><a href="@events.First().Url" target="_blank">@events.First().Title</a></td>
                         </tr>
                         if (events.Count > 1)
                         {
                             foreach (var e in events.Skip(1))
                             {
                                 <tr>
-                                    <td><a href="/EventInfos/Details/@e.Id">@e.Title</a></td>
+                                    <td><a href="@e.Url" target="_blank">@e.Title</a></td>
                                 </tr>
                             }
                         }
