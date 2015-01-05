@@ -15,22 +15,13 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.StartTime)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EndTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PlaceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlaceAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlaceUrl)
+            @Html.DisplayNameFor(model => model.Url)
         </th>
         <th></th>
     </tr>
@@ -41,22 +32,13 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.StartTime)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EndTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PlaceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlaceAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlaceUrl)
+            @Html.DisplayFor(modelItem => item.Url)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
