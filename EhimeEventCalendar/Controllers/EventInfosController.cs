@@ -66,7 +66,7 @@ namespace EhimeEventCalendar.Controllers
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,StartTime,EndTime,PlaceName,PlaceAddress,PlaceUrl,TimeStamp")] EventInfo eventInfo)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,StartTime,EndTime,Url,TimeStamp")] EventInfo eventInfo)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace EhimeEventCalendar.Controllers
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,StartTime,EndTime,PlaceName,PlaceAddress,PlaceUrl,TimeStamp")] EventInfo eventInfo)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,StartTime,EndTime,Url,TimeStamp")] EventInfo eventInfo)
         {
             if (ModelState.IsValid)
             {
