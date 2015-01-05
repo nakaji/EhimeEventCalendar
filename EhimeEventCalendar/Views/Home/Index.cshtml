@@ -6,11 +6,15 @@
 
 <div class="jumbotron">
     <h1>愛媛イベントカレンダー</h1>
-    <p class="lead">愛媛のイベントを皆で共有するサイトです。自由にイベントの登録、修正が行えますので気軽に登録してください。</p>
+    <p class="lead">
+        愛媛のイベントを皆で共有するサイトです。<br/>
+        イベントの詳細は外部のサイトへリンクする形式を取っています。<br />
+        自由にイベントの登録、修正が行えますので気軽に登録してください。
+    </p>
 </div>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
         <h2 id="ym">@Model.Year 年 @Model.Month 月のイベント</h2>
         <div class="row">
             @Html.ActionLink("<< 前月", "Calendar", "EventInfos", new { year = Model.PrevMonth.Year, month = Model.PrevMonth.Month }, new { @class = "btn btn-default" })
@@ -46,17 +50,17 @@
                     }
                     //イベントがない日は表示しない
                     @*else
-                    {
-                        <tr>
-                            <td>@i</td>
-                            <td></td>
-                        </tr>
-                    }*@
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td></td>
+                            </tr>
+                        }*@
                 }
             </tbody>
         </table>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <h2>サイドバーとか</h2>
     </div>
 </div>
