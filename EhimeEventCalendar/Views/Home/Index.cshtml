@@ -7,7 +7,7 @@
 <div class="jumbotron">
     <h1>愛媛イベントカレンダー</h1>
     <p class="lead">
-        愛媛のイベントを皆で共有するサイトです。<br/>
+        愛媛のイベントを皆で共有するサイトです。<br />
         イベントの詳細は外部のサイトへリンクする形式を取っています。<br />
         自由にイベントの登録、修正が行えますので気軽に登録してください。
     </p>
@@ -17,38 +17,38 @@
     <div class="col-md-9">
         <h2 id="ym">@Model.Year 年 @Model.Month 月のイベント</h2>
         <div class="row">
-            @Html.ActionLink("<< 前月", "Calendar", "EventInfos", new { year = Model.PrevMonth.Year, month = Model.PrevMonth.Month }, new { @class = "btn btn-default" })
-            @Html.ActionLink("翌月 >>", "Calendar", "EventInfos", new { year = Model.NextMonth.Year, month = Model.NextMonth.Month }, new { @class = "btn btn-default pull-right" })
+            @Html.ActionLink("<< 前月", "Calendar", "EventInfos", new {year = Model.PrevMonth.Year, month = Model.PrevMonth.Month}, new {@class = "btn btn-default"})
+            @Html.ActionLink("翌月 >>", "Calendar", "EventInfos", new {year = Model.NextMonth.Year, month = Model.NextMonth.Month}, new {@class = "btn btn-default pull-right"})
         </div>
         <table class="table">
             <thead>
-                <tr>
-                    <td>日付</td>
-                    <td>タイトル</td>
-                </tr>
+            <tr>
+                <td>日付</td>
+                <td>タイトル</td>
+            </tr>
             </thead>
             <tbody>
-                @for (var i = 1; i <= Model.Days; i++)
+            @for (var i = 1; i <= Model.Days; i++)
+            {
+                var events = Model.EventInfos.Where(x => x.StartTime.Day == i).ToList();
+                if (events.Any())
                 {
-                    var events = Model.EventInfos.Where(x => x.StartTime.Day == i).ToList();
-                    if (events.Any())
+                    <tr>
+                        <td rowspan="@events.Count().ToString()">@i</td>
+                        <td><a href="@events.First().Url" target="_blank">@events.First().Title</a></td>
+                    </tr>
+                    if (events.Count > 1)
                     {
-                        <tr>
-                            <td rowspan="@events.Count().ToString()">@i</td>
-                            <td><a href="@events.First().Url" target="_blank">@events.First().Title</a></td>
-                        </tr>
-                        if (events.Count > 1)
+                        foreach (var e in events.Skip(1))
                         {
-                            foreach (var e in events.Skip(1))
-                            {
-                                <tr>
-                                    <td><a href="@e.Url" target="_blank">@e.Title</a></td>
-                                </tr>
-                            }
+                            <tr>
+                                <td><a href="@e.Url" target="_blank">@e.Title</a></td>
+                            </tr>
                         }
-
                     }
-                    //イベントがない日は表示しない
+
+                }
+                //イベントがない日は表示しない
                     @*else
                         {
                             <tr>
@@ -56,7 +56,7 @@
                                 <td></td>
                             </tr>
                         }*@
-                }
+            }
             </tbody>
         </table>
     </div>
@@ -64,3 +64,29 @@
         <h2>サイドバーとか</h2>
     </div>
 </div>
+
+<div id="fb-root"></div>
+<div>
+    <ul class="snsb">
+        <li><a class="twitter-share-button" href="https://twitter.com/share">Tweet</a></li>
+        <li><div class="fb-like" data-href="http://ehime-events.azurewebsites.net/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></li>
+    </ul>
+</div>
+
+@section scripts
+{
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
+    <script type="text/javascript">
+        window.twttr = (function (d, s, id) { var t, js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) { return } js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } }) }(document, "script", "twitter-wjs"));
+    </script>
+}
