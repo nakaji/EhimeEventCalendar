@@ -105,10 +105,16 @@ namespace EhimeEventCalendar.Controllers
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,StartTime,EndTime,Url,TimeStamp")] EventInfo eventInfo)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Url,TimeStamp")] EventInfo eventInfo,
+            [ModelBinder(typeof(DateTimeBinder))]DateTime startTime,
+            [ModelBinder(typeof(DateTimeBinder))]DateTime endTime
+            )
         {
             if (ModelState.IsValid)
             {
+                eventInfo.StartTime = startTime;
+                eventInfo.EndTime = endTime;
+
                 db.Entry(eventInfo).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

@@ -4,10 +4,9 @@
     ViewBag.Title = "Create";
 
     var hoursList = Enumerable.Range(0, 24)
-    .Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() }).ToList();
+        .Select(x => new SelectListItem() { Text = x.ToString("00"), Value = x.ToString() }).ToList();
     var minutesList = Enumerable.Range(0, 60).Where(x => x % 5 == 0)
-        .Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() }).ToList();
-
+        .Select(x => new SelectListItem() { Text = x.ToString("00"), Value = x.ToString() }).ToList();
 }
 
 <h2>Create</h2>
