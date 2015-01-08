@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EhimeEventCalendar.Exteisions;
 using EhimeEventCalendar.Models;
 using EhimeEventCalendar.ViewModels;
 
@@ -66,10 +67,16 @@ namespace EhimeEventCalendar.Controllers
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,StartTime,EndTime,Url,TimeStamp")] EventInfo eventInfo)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Url,TimeStamp")] EventInfo eventInfo,
+            [ModelBinder(typeof(DateTimeBinder))]DateTime startTime,
+            [ModelBinder(typeof(DateTimeBinder))]DateTime endTime
+            )
         {
             if (ModelState.IsValid)
             {
+                eventInfo.StartTime = startTime;
+                eventInfo.EndTime = endTime;
+
                 db.EventInfos.Add(eventInfo);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

@@ -32,3 +32,14 @@ textarea {
     float: left;
     margin-right: 4px;
 }
+
+.form-year {
+    display: inline;
+    width: 120px;
+}
+
+.form-hour,
+.form-minute {
+    display: inline;
+    width: 80px;
+}

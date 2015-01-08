@@ -2,6 +2,12 @@
 
 @{
     ViewBag.Title = "Create";
+
+    var hoursList = Enumerable.Range(0, 24)
+    .Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() }).ToList();
+    var minutesList = Enumerable.Range(0, 60).Where(x => x % 5 == 0)
+        .Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() }).ToList();
+
 }
 
 <h2>Create</h2>
@@ -26,7 +32,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBox("StartTime.Date", "", new { @class = "form-control form-year" })
+                @Html.DropDownList("StartTime.Hour", hoursList, new { @class = "form-control form-hour" }):
+                @Html.DropDownList("StartTime.Minute", minutesList, new { @class = "form-control form-minute" })
                 @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +42,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBox("EndTime.Date", "", new { @class = "form-control form-year" })
+                @Html.DropDownList("EndTime.Hour", hoursList, new { @class = "form-control form-hour" }):
+                @Html.DropDownList("EndTime.Minute", minutesList, new { @class = "form-control form-minute" })
                 @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
             </div>
         </div>
