@@ -28,7 +28,9 @@ namespace EhimeEventCalendar
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/themes/base/all.css",
+                      "~/Content/themes/base/core.css",
+                      "~/Content/themes/base/datepicker.css",
+                      "~/Content/themes/base/theme.css",
                       "~/Content/site.css"));
         }
     }
