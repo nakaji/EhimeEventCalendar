@@ -70,4 +70,11 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script>
+        $(function () {
+            $("#StartTime_Date").datepicker({ dateFormat: "yy/mm/dd" });
+            $("#EndTime_Date").datepicker({ dateFormat: "yy/mm/dd" });
+        });
+    </script>
 }
