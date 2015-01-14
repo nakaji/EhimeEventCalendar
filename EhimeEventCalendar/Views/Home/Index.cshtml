@@ -14,7 +14,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
         <h2 id="ym">@Model.Year 年 @Model.Month 月のイベント</h2>
         <div class="row">
             @Html.ActionLink("<< 前月", "Calendar", "EventInfos", new {year = Model.PrevMonth.Year, month = Model.PrevMonth.Month}, new {@class = "btn btn-default"})
@@ -59,9 +59,6 @@
             }
             </tbody>
         </table>
-    </div>
-    <div class="col-md-3">
-        <h2>サイドバーとか</h2>
     </div>
 </div>
 
