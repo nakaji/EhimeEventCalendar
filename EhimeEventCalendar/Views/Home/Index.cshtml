@@ -25,6 +25,7 @@
             <tr>
                 <td>日付</td>
                 <td>タイトル</td>
+                <td>時刻</td>
             </tr>
             </thead>
             <tbody>
@@ -36,6 +37,7 @@
                     <tr>
                         <td rowspan="@events.Count().ToString()">@i</td>
                         <td><a href="@events.First().Url" target="_blank">@events.First().Title</a></td>
+                        <td>@events.First().StartTime.ToString("HH:mm")～@events.First().EndTime.ToString("HH:mm")</td>
                     </tr>
                     if (events.Count > 1)
                     {
@@ -43,6 +45,7 @@
                         {
                             <tr>
                                 <td><a href="@e.Url" target="_blank">@e.Title</a></td>
+                                <td>@events.First().StartTime.ToString("HH:mm")～@events.First().EndTime.ToString("HH:mm")</td>
                             </tr>
                         }
                     }
