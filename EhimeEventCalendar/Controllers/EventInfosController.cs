@@ -30,7 +30,8 @@ namespace EhimeEventCalendar.Controllers
                 NextMonth = start.AddMonths(1),
             };
             var end = start.AddMonths(1);
-            model.EventInfos = db.EventInfos.Where(x => x.StartTime >= start && x.StartTime < end).ToList();
+            model.EventInfos = db.EventInfos.Where(x => x.StartTime >= start && x.StartTime < end)
+                .OrderBy(x => x.StartTime).ToList();
 
             return View("../Home/Index", model);
         }

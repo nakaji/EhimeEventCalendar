@@ -24,7 +24,8 @@ namespace EhimeEventCalendar.Controllers
             };
             var end = start.AddMonths(1);
             // 当月のイベント
-            model.EventInfos = db.EventInfos.Where(x => x.StartTime >= start && x.StartTime < end).ToList();
+            model.EventInfos = db.EventInfos.Where(x => x.StartTime >= start && x.StartTime < end)
+                .OrderBy(x=>x.StartTime).ToList();
 
             return View(model);
         }
