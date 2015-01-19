@@ -152,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EventInfosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Exteisions\Util.cs" />
     <Compile Include="Exteisions\VenueBinder.cs" />
     <Compile Include="Exteisions\DateTimeBinder.cs" />
     <Compile Include="Global.asax.cs">

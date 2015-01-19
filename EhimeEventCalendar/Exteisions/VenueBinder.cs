@@ -13,20 +13,10 @@ namespace EhimeEventCalendar.Exteisions
         {
             return new Venue
             {
-                Name = GetValue(bindingContext, "Name"),
-                Address = GetValue(bindingContext, "Address"),
-                Url = GetValue(bindingContext, "Url")
+                Name = Util.GetValue(bindingContext, "Name"),
+                Address = Util.GetValue(bindingContext, "Address"),
+                Url = Util.GetValue(bindingContext, "Url")
             };
-        }
-
-        public string GetValue(ModelBindingContext bindingContext, string key)
-        {
-            var result = bindingContext.ValueProvider.GetValue(string.Format("{0}.{1}", bindingContext.ModelName, key));
-            if (result == null)
-            {
-                return string.Empty;
-            }
-            return (string)result.ConvertTo(typeof(string));
         }
     }
 }
