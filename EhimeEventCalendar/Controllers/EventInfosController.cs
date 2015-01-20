@@ -68,17 +68,15 @@ namespace EhimeEventCalendar.Controllers
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Url,TimeStamp,Contents")] EventInfo eventInfo,
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Url,TimeStamp,Contents,Venue")] EventInfo eventInfo,
             [ModelBinder(typeof(DateTimeBinder))]DateTime startTime,
-            [ModelBinder(typeof(DateTimeBinder))]DateTime endTime,
-            [ModelBinder(typeof(VenueBinder))]Venue venue
+            [ModelBinder(typeof(DateTimeBinder))]DateTime endTime
             )
         {
             if (ModelState.IsValid)
             {
                 eventInfo.StartTime = startTime;
                 eventInfo.EndTime = endTime;
-                eventInfo.Venue = venue;
 
                 db.EventInfos.Add(eventInfo);
                 await db.SaveChangesAsync();
@@ -108,17 +106,15 @@ namespace EhimeEventCalendar.Controllers
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Url,TimeStamp,Contents")] EventInfo eventInfo,
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Url,TimeStamp,Contents,Venue")] EventInfo eventInfo,
             [ModelBinder(typeof(DateTimeBinder))]DateTime startTime,
-            [ModelBinder(typeof(DateTimeBinder))]DateTime endTime,
-             [ModelBinder(typeof(VenueBinder))]Venue venue
+            [ModelBinder(typeof(DateTimeBinder))]DateTime endTime
            )
         {
             if (ModelState.IsValid)
             {
                 eventInfo.StartTime = startTime;
                 eventInfo.EndTime = endTime;
-                eventInfo.Venue = venue;
 
                 db.Entry(eventInfo).State = EntityState.Modified;
                 await db.SaveChangesAsync();
