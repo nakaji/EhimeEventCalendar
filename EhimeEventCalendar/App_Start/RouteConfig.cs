@@ -15,7 +15,13 @@ namespace EhimeEventCalendar
 
             //属性ルーティングを有効化
             routes.MapMvcAttributeRoutes();
-            
+
+            routes.MapRoute(
+                name: "Events",
+                url: "Events/{action}/{id}",
+                defaults: new { controller = "EventInfos", action = "Index", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
