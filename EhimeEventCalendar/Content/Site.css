@@ -43,3 +43,7 @@ textarea {
     display: inline;
     width: 80px;
 }
+
+.events-show-info dt {
+    padding-bottom: 20px;
+}

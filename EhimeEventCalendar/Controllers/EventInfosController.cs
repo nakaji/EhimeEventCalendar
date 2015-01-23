@@ -17,7 +17,7 @@ namespace EhimeEventCalendar.Controllers
     {
         private AppDbContext db = new AppDbContext();
 
-        [Route("EventInfos/Calendar/{year}/{month}", Name = "CalendarRoute")]
+        [Route("Calendar/{year}/{month}", Name = "CalendarRoute")]
         public ActionResult Calendar(int year, int month)
         {
             var start = new DateTime(year, month, 1, 0, 0, 0);
@@ -42,7 +42,7 @@ namespace EhimeEventCalendar.Controllers
             return View(await db.EventInfos.ToListAsync());
         }
 
-        // GET: EventInfos/Details/5
+        // GET: Event/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -68,7 +68,7 @@ namespace EhimeEventCalendar.Controllers
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Url,TimeStamp")] EventInfo eventInfo,
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Url,TimeStamp,Contents,Venue")] EventInfo eventInfo,
             [ModelBinder(typeof(DateTimeBinder))]DateTime startTime,
             [ModelBinder(typeof(DateTimeBinder))]DateTime endTime
             )
@@ -106,10 +106,10 @@ namespace EhimeEventCalendar.Controllers
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Url,TimeStamp")] EventInfo eventInfo,
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Url,TimeStamp,Contents,Venue")] EventInfo eventInfo,
             [ModelBinder(typeof(DateTimeBinder))]DateTime startTime,
             [ModelBinder(typeof(DateTimeBinder))]DateTime endTime
-            )
+           )
         {
             if (ModelState.IsValid)
             {

@@ -14,15 +14,9 @@ namespace EhimeEventCalendar.Exteisions
 
             try
             {
-                var date =
-                    bindingContext.ValueProvider.GetValue(string.Format("{0}.Date", bindingContext.ModelName))
-                        .ConvertTo(typeof(string));
-                var hour =
-                    bindingContext.ValueProvider.GetValue(string.Format("{0}.Hour", bindingContext.ModelName))
-                        .ConvertTo(typeof(string));
-                var minute =
-                    bindingContext.ValueProvider.GetValue(string.Format("{0}.Minute", bindingContext.ModelName))
-                        .ConvertTo(typeof(string));
+                var date = Util.GetValue(bindingContext, "Date");
+                var hour = Util.GetValue(bindingContext, "Hour");
+                var minute = Util.GetValue(bindingContext, "Minute");
                 result = DateTime.Parse(string.Format("{0} {1}:{2}", date, hour, minute));
             }
             catch { }
