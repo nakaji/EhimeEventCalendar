@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using EhimeEventCalendar.Models;
 using EhimeEventCalendar.Migrations;
+using System.Web.Http;
+using System.Web.Routing;
 
 namespace EhimeEventCalendar
 {
@@ -19,6 +21,7 @@ namespace EhimeEventCalendar
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
         }
