@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EhimeEventCalendar.Service
 {
-    interface IService
+    public interface IService
     {
         EventInfo GetEvent(string url);
     }

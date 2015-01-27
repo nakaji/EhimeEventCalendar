@@ -177,6 +177,7 @@
     <Compile Include="Models\EventInfo.cs" />
     <Compile Include="Service\Doorkeeper.cs" />
     <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\ServiceSelector.cs" />
     <Compile Include="ViewModels\HomeViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebApi\EventsController.cs" />

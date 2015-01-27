@@ -13,8 +13,8 @@ namespace EhimeEventCalendar.WebApi
     {
         public EventInfo Get(string url)
         {
-            var webApi = new Doorkeeper();
-            return webApi.GetEvent(url);
+            var service = ServiceSelector.GetService(url);
+            return service.GetEvent(url);
         }
     }
 }
