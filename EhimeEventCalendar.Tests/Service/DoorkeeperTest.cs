@@ -26,5 +26,15 @@ namespace EhimeEventCalendar.Tests.Service
 
             Assert.AreEqual("", @event.Title);
         }
+
+        [TestMethod]
+        public void GetEvent_URL指定でイベント情報を取得する()
+        {
+            var sut = new Doorkeeper();
+
+            var @event = sut.GetEvent("http://agile459.doorkeeper.jp/events/19916");
+
+            Assert.AreEqual("Agile459 #29 今年をアジャイルプランニング！", @event.Title);
+        }
     }
 }
