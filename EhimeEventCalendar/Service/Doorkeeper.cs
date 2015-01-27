@@ -9,7 +9,7 @@ using Codeplex.Data;
 
 namespace EhimeEventCalendar.Service
 {
-    public class Doorkeeper
+    public class Doorkeeper : IService
     {
         public EventInfo GetEvent(int id)
         {
