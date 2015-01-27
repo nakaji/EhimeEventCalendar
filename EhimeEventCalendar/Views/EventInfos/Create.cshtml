@@ -84,6 +84,7 @@
             @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
+                <div id="getEventInfo" class="btn btn-info">イベント情報を取得</div>
                 @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -103,10 +104,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryui")
-    <script>
-        $(function () {
-            $("#StartTime_Date").datepicker({ dateFormat: "yy/mm/dd" });
-            $("#EndTime_Date").datepicker({ dateFormat: "yy/mm/dd" });
-        });
-    </script>
+    @Scripts.Render("~/bundles/myscripts")
 }

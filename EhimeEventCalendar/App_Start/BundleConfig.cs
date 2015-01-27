@@ -26,6 +26,9 @@ namespace EhimeEventCalendar
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/myscripts").Include(
+                     "~/Scripts/MyScript.js"));
+            
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/themes/base/core.css",
