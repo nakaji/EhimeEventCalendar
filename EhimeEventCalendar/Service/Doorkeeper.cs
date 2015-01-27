@@ -10,7 +10,7 @@ namespace EhimeEventCalendar.Service
 {
     public class Doorkeeper
     {
-        public EventInfo GetById(int id)
+        public EventInfo GetEvent(int id)
         {
             var url = "http://api.doorkeeper.jp/events/{0}";
 

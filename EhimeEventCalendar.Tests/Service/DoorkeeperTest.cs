@@ -12,7 +12,7 @@ namespace EhimeEventCalendar.Tests.Service
         {
             var sut = new Doorkeeper();
 
-            var @event = sut.GetById(19916);
+            var @event = sut.GetEvent(19916);
 
             Assert.AreEqual("Agile459 #29 今年をアジャイルプランニング！", @event.Title);
         }
@@ -22,7 +22,7 @@ namespace EhimeEventCalendar.Tests.Service
         {
             var sut = new Doorkeeper();
 
-            var @event = sut.GetById(0);
+            var @event = sut.GetEvent(0);
 
             Assert.AreEqual("", @event.Title);
         }
