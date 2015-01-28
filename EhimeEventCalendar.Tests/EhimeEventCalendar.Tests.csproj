@@ -98,6 +98,8 @@
     <Compile Include="Models\AppDbContextTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Service\DoorkeeperTest.cs" />
+    <Compile Include="Service\ServiceSelectorTest.cs" />
     <Compile Include="TestInitializer.cs" />
   </ItemGroup>
   <ItemGroup>

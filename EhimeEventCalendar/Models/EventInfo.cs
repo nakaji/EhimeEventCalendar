@@ -9,6 +9,14 @@ namespace EhimeEventCalendar.Models
 {
     public class EventInfo
     {
+        public EventInfo()
+        {
+            Title = string.Empty;
+            Contents = string.Empty;
+            Venue = new Venue();
+            Url = string.Empty;
+        }
+
         public int Id { get; set; }
 
         [Display(Name = "タイトル")]
@@ -35,6 +43,13 @@ namespace EhimeEventCalendar.Models
 
     public class Venue
     {
+        public Venue()
+        {
+            Name = string.Empty;
+            Address = string.Empty;
+            Url = string.Empty;
+        }
+
         [Display(Name = "会場名")]
         public string Name { get; set; }
 
