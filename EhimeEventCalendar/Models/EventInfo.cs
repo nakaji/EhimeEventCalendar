@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.Remoting.Metadata;
-using System.Web;
+using System.Web.Mvc;
 
 namespace EhimeEventCalendar.Models
 {
@@ -29,6 +26,7 @@ namespace EhimeEventCalendar.Models
         public DateTime EndTime { get; set; }
 
         [Display(Name = "内容")]
+        [AllowHtml]
         [DataType(DataType.MultilineText)]
         public string Contents { get; set; }
 
@@ -38,7 +36,7 @@ namespace EhimeEventCalendar.Models
         public string Url { get; set; }
 
         [Timestamp]
-        public byte[] TimeStamp { get; set; } 
+        public byte[] TimeStamp { get; set; }
     }
 
     public class Venue
