@@ -61,5 +61,13 @@ namespace EhimeEventCalendar.Tests.Exteisions
 
             Assert.AreEqual("<hr>&lt;iframe src=\"http://example.com/\"&gt;XXXXX&lt;/iframe&gt;", Util.SanitizingHtml("<hr><iframe src=\"http://example.com/\">XXXXX</iframe>"));
         }
+
+        [TestMethod]
+        public void SanitizingHtml_タグの大文字小文字を区別しない()
+        {
+            Assert.AreEqual("<hr>&lt;SCRIPT&gt;hoge();&lt;/SCRIPT&gt;", Util.SanitizingHtml("<hr><SCRIPT>hoge();</SCRIPT>"));
+
+            Assert.AreEqual("<hr>&lt;IFRAME&gt;XXXXX&lt;/IFRAME&gt;", Util.SanitizingHtml("<hr><IFRAME>XXXXX</IFRAME>"));
+        }
     }
 }

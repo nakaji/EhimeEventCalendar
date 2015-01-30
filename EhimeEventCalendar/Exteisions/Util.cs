@@ -21,14 +21,14 @@ namespace EhimeEventCalendar.Exteisions
 
         public static string SanitizingHtml(string html)
         {
-            if (html==null) return null;
+            if (html == null) return null;
 
             //todo:後で綺麗にしたい
-            var buf = Regex.Replace(html, "<script(?<opt>[^>]*)>", "&lt;script${opt}&gt;");
-            buf = Regex.Replace(buf, "</script(?<opt>[^>]*)>", "&lt;/script${opt}&gt;");
+            var buf = Regex.Replace(html, "<(?<tag>script)(?<opt>[^>]*)>", "&lt;${tag}${opt}&gt;", RegexOptions.IgnoreCase);
+            buf = Regex.Replace(buf, "</(?<tag>script)(?<opt>[^>]*)>", "&lt;/${tag}${opt}&gt;", RegexOptions.IgnoreCase);
 
-            buf = Regex.Replace(buf, "<iframe(?<opt>[^>]*)>", "&lt;iframe${opt}&gt;");
-            buf = Regex.Replace(buf, "</iframe(?<opt>[^>]*)>", "&lt;/iframe${opt}&gt;");
+            buf = Regex.Replace(buf, "<(?<tag>iframe)(?<opt>[^>]*)>", "&lt;${tag}${opt}&gt;", RegexOptions.IgnoreCase);
+            buf = Regex.Replace(buf, "</(?<tag>iframe)(?<opt>[^>]*)>", "&lt;/${tag}${opt}&gt;", RegexOptions.IgnoreCase);
 
             return buf;
         }
