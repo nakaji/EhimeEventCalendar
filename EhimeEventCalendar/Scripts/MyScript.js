@@ -1,8 +1,7 @@
 ﻿$(function () {
     $("#StartTime_Date").datepicker({ dateFormat: "yy/mm/dd" });
     $("#EndTime_Date").datepicker({ dateFormat: "yy/mm/dd" });
-});
-$(function () {
+
     $("#getEventInfo").click(function () {
         $.ajax({
             type: "GET",
@@ -18,7 +17,8 @@ $(function () {
                 $("#EndTime_Date").val(date.getFullYear());
                 $("#EndTime_Hour").val(date.getHours());
                 $("#EndTime_Minute").val(date.getMinutes());
-                $("#Contents").val(json.Contents);
+                //$("#Contents").val(json.Contents);
+                CKEDITOR.instances.Contents.setData(json.Contents);
                 $("#Venue_Name").val(json.Venue.Name);
                 $("#Venue_Address").val(json.Venue.Address);
                 $("#Venue_Url").val(json.Venue.Url);
