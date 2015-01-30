@@ -23,13 +23,16 @@ namespace EhimeEventCalendar.Exteisions
         {
             if (html == null) return null;
 
-            //todo:後で綺麗にしたい
-            var buf = Regex.Replace(html, "<(?<tag>script)(?<opt>[^>]*)>", "&lt;${tag}${opt}&gt;", RegexOptions.IgnoreCase);
-            buf = Regex.Replace(buf, "</(?<tag>script)(?<opt>[^>]*)>", "&lt;/${tag}${opt}&gt;", RegexOptions.IgnoreCase);
+            var buf = html;
+            buf = IgnoreTag(buf, "script");
+            buf = IgnoreTag(buf, "iframe");
 
-            buf = Regex.Replace(buf, "<(?<tag>iframe)(?<opt>[^>]*)>", "&lt;${tag}${opt}&gt;", RegexOptions.IgnoreCase);
-            buf = Regex.Replace(buf, "</(?<tag>iframe)(?<opt>[^>]*)>", "&lt;/${tag}${opt}&gt;", RegexOptions.IgnoreCase);
+            return buf;
+        }
 
+        private static string IgnoreTag(string src, string tag)
+        {
+            var buf = Regex.Replace(src, string.Format("<(?<tag>/*{0})(?<opt>[^>]*)>", tag), "&lt;${tag}${opt}&gt;", RegexOptions.IgnoreCase);
             return buf;
         }
     }
