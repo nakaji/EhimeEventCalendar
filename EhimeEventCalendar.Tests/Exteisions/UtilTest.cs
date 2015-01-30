@@ -39,5 +39,27 @@ namespace EhimeEventCalendar.Tests.Exteisions
         {
             Assert.AreEqual("", Util.GetValue(_bindingContext, "Address"));
         }
+
+        [TestMethod]
+        public void SanitizingHtml_入力がnullの場合はnullを返す()
+        {
+            Assert.IsNull( Util.SanitizingHtml(null));
+        }
+
+        [TestMethod]
+        public void SanitizingHtml_scriptタグを無効化する()
+        {
+            Assert.AreEqual("<hr>&lt;script&gt;hoge();&lt;/script&gt;", Util.SanitizingHtml("<hr><script>hoge();</script>"));
+
+            Assert.AreEqual("<hr>&lt;script type=\"javascript\"&gt;hoge();&lt;/script&gt;", Util.SanitizingHtml("<hr><script type=\"javascript\">hoge();</script>"));
+        }
+
+        [TestMethod]
+        public void SanitizingHtml_iframeタグを無効化する()
+        {
+            Assert.AreEqual("<hr>&lt;iframe&gt;XXXXX&lt;/iframe&gt;", Util.SanitizingHtml("<hr><iframe>XXXXX</iframe>"));
+
+            Assert.AreEqual("<hr>&lt;iframe src=\"http://example.com/\"&gt;XXXXX&lt;/iframe&gt;", Util.SanitizingHtml("<hr><iframe src=\"http://example.com/\">XXXXX</iframe>"));
+        }
     }
 }

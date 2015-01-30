@@ -1,5 +1,5 @@
 ﻿@model EhimeEventCalendar.Models.EventInfo
-
+@using EhimeEventCalendar.Exteisions
 @{
     ViewBag.Title = Model.Title;
 }
@@ -47,6 +47,6 @@
 
     </dl>
     <hr />
-    @Html.DisplayFor(model => model.Contents)
+    @Html.Raw(Util.SanitizingHtml(Model.Contents))
     <hr />
 </div>
