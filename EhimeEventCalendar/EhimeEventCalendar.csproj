@@ -175,6 +175,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\EventInfo.cs" />
+    <Compile Include="Service\ATND.cs" />
     <Compile Include="Service\Doorkeeper.cs" />
     <Compile Include="Service\IService.cs" />
     <Compile Include="Service\ServiceSelector.cs" />
