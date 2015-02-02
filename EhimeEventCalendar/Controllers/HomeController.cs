@@ -13,7 +13,7 @@ namespace EhimeEventCalendar.Controllers
         public ActionResult Index()
         {
             var db = new AppDbContext();
-            var start = new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0);
+            var start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0);
             var model = new HomeIndexViewModel()
             {
                 Year = DateTime.Now.Year,
