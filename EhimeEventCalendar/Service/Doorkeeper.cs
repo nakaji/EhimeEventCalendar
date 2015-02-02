@@ -40,7 +40,6 @@ namespace EhimeEventCalendar.Service
             return @event;
         }
 
-
         public EventInfo GetEvent(string url)
         {
             var match = Regex.Match(url, "events/(?<EventId>[0-9]+)");
