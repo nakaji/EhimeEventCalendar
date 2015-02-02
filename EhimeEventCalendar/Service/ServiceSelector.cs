@@ -10,7 +10,15 @@ namespace EhimeEventCalendar.Service
     {
         public static IService GetService(string url)
         {
-            return new Doorkeeper();
+            if (url.Contains("doorkeeper.jp"))
+            {
+                return new Doorkeeper();
+            }
+            if (url.Contains("atnd.org"))
+            {
+                return new ATND();
+            }
+            return null;
         }
     }
 }

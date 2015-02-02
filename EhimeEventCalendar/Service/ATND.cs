@@ -1,24 +1,26 @@
-﻿using EhimeEventCalendar.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using Codeplex.Data;
+using EhimeEventCalendar.Models;
 
 namespace EhimeEventCalendar.Service
 {
-    public class Doorkeeper : IService
+    public class ATND:IService
     {
         public EventInfo GetEvent(int id)
         {
-            var url = "http://api.doorkeeper.jp/events/{0}";
+            var url = "http://api.atnd.org/events/?format=json&event_id={0}";
 
             var @event = new EventInfo();
 
             using (var wc = new WebClient())
             {
+                wc.Encoding = Encoding.UTF8;
                 string res;
                 try
                 {
@@ -28,19 +30,20 @@ namespace EhimeEventCalendar.Service
                 {
                     return new EventInfo();
                 }
-                var json = DynamicJson.Parse(res);
-                @event.Title = @json.@event.title;
-                @event.StartTime = DateTime.Parse(@json.@event.starts_at);
-                @event.EndTime = DateTime.Parse(@json.@event.ends_at);
-                @event.Contents = @json.@event.description;
-                @event.Url = @json.@event.public_url;
-                @event.Venue.Name = @json.@event.venue_name;
+                var json = DynamicJson.Parse(res).events[0].@event;
+                @event.Title = @json.title;
+                @event.StartTime = DateTime.Parse(@json.started_at);
+                @event.EndTime = DateTime.Parse(@json.ended_at);
+                @event.Contents = @json.description;
+                @event.Url = @json.event_url;
+                @event.Venue.Name = @json.place;
+                @event.Venue.Address = @json.address;
             }
 
             return @event;
         }
 
-        public EventInfo GetEvent(string url)
+        public Models.EventInfo GetEvent(string url)
         {
             var match = Regex.Match(url, "events/(?<EventId>[0-9]+)");
 
