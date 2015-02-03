@@ -101,6 +101,7 @@
     <Compile Include="Service\ATNDTest.cs" />
     <Compile Include="Service\DoorkeeperTest.cs" />
     <Compile Include="Service\ServiceSelectorTest.cs" />
+    <Compile Include="Service\ConnpassTest.cs" />
     <Compile Include="TestInitializer.cs" />
   </ItemGroup>
   <ItemGroup>

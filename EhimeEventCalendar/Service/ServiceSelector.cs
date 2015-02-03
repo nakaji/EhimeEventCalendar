@@ -18,6 +18,10 @@ namespace EhimeEventCalendar.Service
             {
                 return new ATND();
             }
+            if (url.Contains("connpass.com"))
+            {
+                return new Connpass();
+            }
             return null;
         }
     }
