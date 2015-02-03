@@ -22,16 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+/***********************************/
+.jumbotron h1 {
+    font-size: 50px;
+}
 
 .snsb {
-    list-style-type:none;
+    list-style-type: none;
     overflow: hidden;
 }
 
-.snsb li {
-    float: left;
-    margin-right: 4px;
-}
+    .snsb li {
+        float: left;
+        margin-right: 4px;
+    }
 
 .form-year {
     display: inline;
