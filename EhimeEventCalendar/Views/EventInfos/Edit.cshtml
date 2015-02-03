@@ -89,7 +89,7 @@
                 <div id="getEventInfo" class="btn btn-info">イベント情報を取得※</div>
                 @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
                 <div>
-                    ※Doorkeeper、ATNDに対応しています
+                    ※対応しているサービスは @Html.ActionLink("詳細ページ", "About", "Home", null, new { target = "_blank" }) を参照してください
                 </div>
             </div>
         </div>
