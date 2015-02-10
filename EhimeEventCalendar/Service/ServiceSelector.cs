@@ -24,6 +24,10 @@ namespace EhimeEventCalendar.Service
             {
                 return new Connpass();
             }
+            if (url.Contains("zusaar.com"))
+            {
+                return new Zusaar();
+            }
             return null;
         }
     }

@@ -179,6 +179,7 @@
     <Compile Include="Service\Connpass.cs" />
     <Compile Include="Service\Doorkeeper.cs" />
     <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\Zusaar.cs" />
     <Compile Include="Service\ServiceSelector.cs" />
     <Compile Include="ViewModels\HomeViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -30,5 +30,13 @@ namespace EhimeEventCalendar.Tests.Service
 
             Assert.AreEqual(typeof(ATND), actual.GetType());
         }
+
+        [TestMethod]
+        public void Zusaar用のインスタンスを取得する()
+        {
+            var actual = ServiceSelector.GetService("http://www.zusaar.com/event/12877005");
+
+            Assert.AreEqual(typeof(Zusaar), actual.GetType());
+        }
     }
 }
